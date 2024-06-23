@@ -30,7 +30,7 @@ print(lst2)
 + Взаимодействие классов  
 + Вложенные классы  
   ***Пример***
-  ```
+```
 class Person:
 
     def __init__(self, name, age) -> None:
@@ -50,5 +50,5 @@ class Student(Person):
 
     def greeting(self):
         print(f'Student with name {self.name} says HELLO!')
-  ```
+```
 ### 4 Урок
