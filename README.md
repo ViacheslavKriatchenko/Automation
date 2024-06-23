@@ -25,12 +25,30 @@ for i in range(0, len(lst)):
 print(lst2)
 ```
 ### 3 Урок:
-+ Основные понятия ООП
-+ Методы и поля класса
-+ Взаимодействие классов
-+ Вложенные классы
++ Основные понятия ООП  
++ Методы и поля класса  
++ Взаимодействие классов  
++ Вложенные классы  
   ***Пример***
   ```
+class Person:
 
+    def __init__(self, name, age) -> None:
+        self.name = name
+        self.age = age
+        print('user created')
+
+    def greeting(self):
+        print(f'{self.name} says HELLO!')
+
+
+class Student(Person):
+
+    def __init__(self, name, age, average_grade) -> None:
+        super().__init__(name, age)
+        self.average_grade = average_grade
+
+    def greeting(self):
+        print(f'Student with name {self.name} says HELLO!')
   ```
 ### 4 Урок
