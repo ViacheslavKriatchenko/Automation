@@ -52,3 +52,20 @@ class Student(Person):
         print(f'Student with name {self.name} says HELLO!')
 ```
 ### 4 Урок
++ Разработка калькулятора
++ Тестирование калькулятора
++ Более сложные автотесты
++ Маркеры и параметризация тестов
+  ***Пример***
+```
+@pytest.mark.negative
+@pytest.mark.parametrize('input, output, expectation', [
+    ('!you', '!you', does_not_raise()),
+    ('12level', '12level', does_not_raise()),
+    (None, None, pytest.raises(AttributeError)),
+    ])
+def test_check_capitilize_negative(input, output, expectation):
+    with expectation:
+        result = StringUtils().capitilize(input)
+        assert output == result
+```
