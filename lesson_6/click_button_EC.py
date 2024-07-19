@@ -9,7 +9,7 @@ from selenium.webdriver.chrome.service import Service
 # Создание экземпляра вэбдрайвера
 options = Options()
 options.add_argument("--window-size=1920,1080")
-options.add_argument("--ignore-certificate-errors")
+# options.add_argument("--ignore-certificate-errors")
 
 service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=options)
@@ -19,9 +19,6 @@ wait = WebDriverWait(driver, 20, poll_frequency=1)
 # Переход на вэб-страницу
 URL = "http://uitestingplayground.com/ajax"
 driver.get(URL)
-
-# Ожидание загрузки страницы
-wait.until(EC.url_to_be((URL)))
 
 # Ожидание кликабельности кнопки и нажатие
 AJAX_BUTTON = ("xpath", "//button[@id='ajaxButton']")
