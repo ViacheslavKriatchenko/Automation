@@ -13,7 +13,6 @@ class Task1Page(BasePage):
     FIRST_NAME_LOCATOR = ("xpath", "//input[@name='first-name']")
     LAST_NAME_LOCATOR = ("xpath", "//input[@name='last-name']")
     ADDRESS_LOCATOR = ("xpath", "//input[@name='address']")
-    ZIP_CODE_LOCATOR = ("xpath", "//input[@name='zip-code']")
     CITY_LOCATOR = ("xpath", "//input[@name='city']")
     COUNTRY_LOCATOR = ("xpath", "//input[@name='country']")
     EMAIL_LOCATOR = ("xpath", "//input[@name='e-mail']")
@@ -21,6 +20,11 @@ class Task1Page(BasePage):
     JOB_POSITION_LOCATOR = ("xpath", "//input[@name='job-position']")
     COMPANY_LOCATOR = ("xpath", "//input[@name='company']")
     SUBMIT_BUTTON_LOCATOR = ("xpath", "//button[@type='submit']")
+
+    # Локаторы после нажатия Submit
+
+    ZIP_CODE_LOCATOR = ("xpath", "//div[@id='zip-code']")
+    ALL_FIELDS = ("xpath", "//div[contains(@class, 'alert-success')]")
 
     # Действия
 
@@ -74,7 +78,14 @@ class Task1Page(BasePage):
             EC.element_to_be_clickable((self.SUBMIT_BUTTON_LOCATOR))
             ).click()
 
-    def check_fields_color(self):
-        self.all_fields = self.driver.f(*self.ALL_INPUT_FIELDS)
-        for self.field in self.all_fields:
-            assert "alert-success" in self.all_fields.get_attribute('class'), "поле красное"
+    def check_zip_fields_color(self):
+        assert "alert-danger" in self.driver.find_element(
+            *self.ZIP_CODE_LOCATOR
+        ).get_attribute('class'), "поле зеленое"
+        print('Поле Zip code красное!')
+
+    def check_all_fields_color(self):
+        fields = self.driver.find_elements(*self.ALL_FIELDS)
+        for field in fields:
+            assert "success" in field.get_attribute('class'), "поле красное"
+        print('Все поля зеленые!')

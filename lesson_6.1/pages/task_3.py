@@ -1,7 +1,6 @@
 from base.base_page import BasePage
 from links import Links
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.action_chains import ActionChains
 
 
 class Task3Page(BasePage):
@@ -104,10 +103,11 @@ class Task3Page(BasePage):
         ).click()
 
     def print_total_price(self):
-        total = self.driver.find_element(*self.TOTAL_PRICE_FIELD)
-        print(f'Total price = {total}')
+        total_text = self.driver.find_element(*self.TOTAL_PRICE_FIELD).text
+        print(total_text)
 
     def result_verification(self):
-        assert self.driver.find_element(
-            *self.SCREEN_LOCATOR
-            ).text == '15', "Что-то пошло не так"
+        assert '$58.29' in self.driver.find_element(
+            *self.TOTAL_PRICE_FIELD
+            ).text, 'Неверная цена'
+        print('Всё ОК!')

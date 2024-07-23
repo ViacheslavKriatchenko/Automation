@@ -49,3 +49,4 @@ class Task2Page(BasePage):
         assert self.driver.find_element(
             *self.SCREEN_LOCATOR
             ).text == '15', "Что-то пошло не так"
+        print('Всё ОК!')

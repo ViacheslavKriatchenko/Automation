@@ -22,4 +22,5 @@ class TestProfile(BaseTest):
         sleep(3)
         self.task_1.click_submit_button()
         sleep(10)
-        self.task_1.check_fields_color()
+        self.task_1.check_zip_fields_color()
+        self.task_1.check_all_fields_color()
