@@ -98,7 +98,7 @@ button = WebDriverWait(driver, 5).until(
 button.click()
 ```
 ### 6 Урок
-+ Что такое PageObject?
++ Что такое PageObject?  
   ***Пример***
 ```
 import pytest
