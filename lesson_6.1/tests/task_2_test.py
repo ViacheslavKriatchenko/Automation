@@ -1,6 +1,5 @@
 import pytest
 from base.base_test import BaseTest
-from time import sleep
 
 
 class TestCalculate(BaseTest):
@@ -15,4 +14,3 @@ class TestCalculate(BaseTest):
         self.task_2.action_input()
         self.task_2.wait_delay_result()
         self.task_2.result_verification()
-        sleep(5)
