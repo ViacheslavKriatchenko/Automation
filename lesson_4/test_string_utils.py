@@ -5,12 +5,13 @@ from contextlib import nullcontext as does_not_raise
 
 # функция capitilize
 @pytest.mark.positive
-@pytest.mark.parametrize('input, output', [
-    ('name', 'Name'),
+@pytest.mark.parametrize('data', [
+    pytest.param(('name', 'Name'), id='вход name, выход Name'),
     ('FIRST', 'First'),
     ('python3', 'Python3'),
      ])
-def test_check_capitilize(input, output):
+def test_check_capitilize(data):
+    input, output = data
     result = StringUtils().capitilize(input)
     assert output == result
 
@@ -226,3 +227,14 @@ def test_check_list_to_string(input_1, delim, output):
 def test_check_list_to_string_negative(input_1, delim, output):
     result = StringUtils().list_to_string(input_1, delim)
     assert result == output
+
+
+# @pytest.mark.positive
+# @pytest.mark.parametrize('input, output', [
+#     ('name', 'Name'),
+#     ('FIRST', 'First'),
+#     ('python3', 'Python3'),
+#      ])
+# def test_check_capitilize(input, output):
+#     result = StringUtils().capitilize(input)
+#     assert output == result

@@ -82,7 +82,8 @@ def get_cart_count():
 
 # Проверить, что счетчик соответствует количеству добавленных книг из шага 'C'
 # def compare_values():
-#     assert get_cart_count() == add_books_in_the_cart(), "количество не совпадает"
+#     assert get_cart_count() == add_books_in_the_cart(),
+# "количество не совпадает"
 #     print("Все ОК!")
 
 
@@ -113,5 +114,5 @@ def test_labirint_qqq():
     print("Всё ОК!")
 
 
-# test_labirint()
+test_labirint()
 test_labirint_qqq()

@@ -46,8 +46,12 @@ sleep(3)
 # Перейти в корзину
 driver.find_element("xpath", "//a[contains(@class, 'cart-icon-js')]").click()
 sleep(3)
-# Проверить, что счетчик товаров соответствует количеству добавленных книг из шага c
-cart_count = driver.find_element("xpath", "//a[@data-event-label='myCart']/b").text
+# Проверить, что счетчик товаров соответствует
+# количеству добавленных книг из шага 'C'
+cart_count = driver.find_element(
+    "xpath", "//a[@data-event-label='myCart']/b"
+    ).text
 assert int(cart_count) == count, "количество не совпадает"
 print("Все ОК!")
+
 driver.quit()

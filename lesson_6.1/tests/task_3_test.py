@@ -1,6 +1,5 @@
 import pytest
 from base.base_test import BaseTest
-from time import sleep
 
 
 class TestTotalPrice(BaseTest):
