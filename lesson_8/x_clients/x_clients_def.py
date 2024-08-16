@@ -27,6 +27,19 @@ class EmployeeDef:
         TOKEN = response.json()['userToken']
         return TOKEN
 
+    def add_a_new_company(self, company_name, desc, TOKEN):
+        response = requests.post(
+            url=f'{self.url}company',
+            headers={
+                'x-client-token': TOKEN
+            },
+            json={
+                'name': company_name,
+                'description': desc
+            }
+        )
+        return response.json()
+
     # функция получить список сотрудников компании
     def get_a_list_of_employees(self, company_id: int):
         query_params = {
@@ -54,13 +67,14 @@ class EmployeeDef:
             "birthdate": None,
             "isActive": isActive
         }
-        requests.post(
+        response = requests.post(
             url=f'{self.url}employee',
             headers={
                 'x-client-token': TOKEN
             },
             json=employee
         )
+        return response.json()
 
     # функция получить сотрудника по id
     def get_employee_by_id(self, employee_id):
