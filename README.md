@@ -167,4 +167,47 @@ class TestCalculate(BaseTest):
 + Теория, практика, сложные структуры  
   ***Пример***
 ```
+def add_a_new_company(self, company_name, desc, TOKEN):
+        response = requests.post(
+            url=f'{self.url}company',
+            headers={
+                'x-client-token': TOKEN
+            },
+            json={
+                'name': company_name,
+                'description': desc
+            }
+        )
+        return response.json()
+
+from x_clients_def import EmployeeDef
+BASE_URL = 'https://x-clients-be.onrender.com/'
+api = EmployeeDef(BASE_URL)
+
+def test_add_a_new_employee():
+    # получаем токен и создаем компанию
+    token = api.get_an_authorization_token()
+    COMPANY_NAME = 'Мертвяки'
+    DESC = 'У нас весело - присоединяйся'
+    new_company_response = api.add_a_new_company(COMPANY_NAME, DESC, token)
+    company_id = new_company_response['id']
+    # список до добавления сотрудника
+    body_before = api.get_a_list_of_employees(company_id)
+    list_before = len(body_before)
+    # добавить сотрудника
+    FNAME = 'Зомби'
+    LNAME = 'Разлагайченко'
+    api.add_a_new_employee(FNAME, LNAME, company_id, token)
+    # список после добавления сотрудника
+    body_after = api.get_a_list_of_employees(company_id)
+    list_after = len(body_after)
+    # сравнение списка и имени созданного сотрудника
+    assert list_after - list_before == 1
+    assert body_after[-1]['firstName'] == FNAME
+```
+### 9 Урок
++ SQLAlchemy. Подключение и select-запросы
++ SQLAlchemy. Запросы insert, update и delete  
+  ***Пример***
+```
 ```
