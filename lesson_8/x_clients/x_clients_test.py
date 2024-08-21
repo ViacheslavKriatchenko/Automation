@@ -30,7 +30,8 @@ def test_get_a_list_of_employees():
     # получить список компаний после добавления
     after_all_companies_response = api.get_list_companies()
     # проверить что компания добавлена
-    assert len(after_all_companies_response) - len(before_all_companies_response) == 1
+    assert len(after_all_companies_response) - len(
+        before_all_companies_response) == 1
     assert after_all_companies_response[-1]['name'] == COMPANY_NAME
     # записываем в переменную id созданной компании
     company_id = after_all_companies_response[-1]['id']
