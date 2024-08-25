@@ -1,6 +1,6 @@
-puthon -m venv venv
-python -m pip freeze > requirements.txt
-python -m pip install -r requirements.txt
+puthon -m venv venv  
+python -m pip freeze > requirements.txt  
+python -m pip install -r requirements.txt  
 
 # lessons_Python_Automation
 ### 1 Урок:
@@ -212,6 +212,26 @@ def test_add_a_new_employee():
 ### 9 Урок
 + SQLAlchemy. Подключение и select-запросы
 + SQLAlchemy. Запросы insert, update и delete  
+  ***Пример***
+```
+from sqlalchemy import create_engine, text
+
+db_connection_path = ("postgresql://sait_name:"
+                      "gagg87dg687D5G785g875G8G@"
+                      "dhd-adga6h7Hh8a8ha-a.piupupu-postgres.render.com/"
+                      "sait_name_fxd0")
+class DbTable():
+
+def __init__(self, db_connection_path) -> None:
+        self.db = create_engine(db_connection_path)
+
+def get_employee_info_by_id(self, emp_id):
+        sql = text('select * from employee where id= :id')
+        return self.db.execute(sql, id=emp_id).fetchall()
+```
+### 10 Урок
++ Allure - Разметка тестов, шагов, методов
++ Автоматизация отчета  
   ***Пример***
 ```
 ```
