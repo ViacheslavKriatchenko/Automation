@@ -1,4 +1,5 @@
 import requests
+import allure
 
 
 class CompanyDef:
@@ -7,16 +8,18 @@ class CompanyDef:
         self.url = url
 
     # функция получить список компаний
-    def get_list_companies(self):
+    @allure.step('API. Получить список всех компаний')
+    def get_list_companies(self) -> list:
         response = requests.get(
             url=f'{self.url}company'
         )
         return response.json()
 
     # функция получить токен авторизации
+    @allure.step('API. Получить токен авторизации для {name}:{password}')
     def get_an_authorization_token(
-            self, name='donatello', password='does-machines'
-            ):
+            self, name: str = 'donatello', password: str = 'does-machines'
+            ) -> str:
         response = requests.post(
             url=f'{self.url}auth/login',
             json={
@@ -28,7 +31,10 @@ class CompanyDef:
         return TOKEN
 
     # функция добавить новую компанию
-    def add_a_new_company(self, company_name, desc, TOKEN):
+    @allure.step('API. Добавить новую компанию')
+    def add_a_new_company(
+            self, company_name: str, desc: str, TOKEN: str
+            ) -> dict:
         response = requests.post(
             url=f'{self.url}company',
             headers={
